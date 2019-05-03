@@ -6,7 +6,7 @@ const Article = require('../models/article');
 router.get('/articles', async (req, res, next) => {
   try {
     const articles = await Article.findAll();
-    res.json(articles);
+    res.status(200).json(articles);
   } catch (error) {
     next(error);
   }
@@ -17,10 +17,7 @@ router.get('/articles/:id', async (req, res, next) => {
     const articleId = req.params.id;
     const foundId = await Article.findById(articleId);
     if (!foundId) {
-      const errStatus = Error('not found');
-      // res.sendStatus(404);
-      errStatus.status = 404;
-      return next(errStatus);
+      res.sendStatus(404);
     } else {
       res.status(200).json(foundId);
     }
@@ -50,7 +47,8 @@ router.put('/articles/:id', async (req, res, next) => {
     const articleId = req.params.id;
     const updateArticle = await Article.findById(articleId);
     if (!articleId) {
-      res.status(500).json({ title: '' });
+      // res.status(500).json({ title: '' });
+      res.sendStatus(500);
     } else {
       const updated = await updateArticle.update(req.body);
       res.status(200).json({

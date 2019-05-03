@@ -38,15 +38,14 @@ Article.prototype.truncate = function(length) {
   this.content = this.content.slice(0, length);
 };
 
-Article.findByTitle = title => {
-  return Article.findOne({
+Article.findByTitle = title =>
+  Article.findOne({
     where: {
       title
     }
   });
-};
 
-Article.beforeUpdate(function(article) {
+Article.beforeUpdate(article => {
   article.version++;
 });
 
