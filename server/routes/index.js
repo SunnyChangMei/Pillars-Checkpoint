@@ -31,13 +31,13 @@ router.get('/articles/:id', async (req, res, next) => {
 
 router.post('/articles/', async (req, res, next) => {
   try {
-    const newArticle = await Article.create(req.body);
-    if (!newArticle) {
+    const article = await Article.create(req.body);
+    if (!article) {
       res.sendStatus(500);
     } else {
       res.status(200).json({
         message: 'Created successfully',
-        newArticle
+        article
       });
     }
   } catch (error) {
