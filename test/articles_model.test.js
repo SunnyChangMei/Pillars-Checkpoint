@@ -88,7 +88,7 @@ describe('The `Article` model', () => {
      *
      * http://docs.sequelizejs.com/manual/tutorial/models-definition.html#validations
      */
-    xit('requires `title` (in a more strict way than for `content`)', async () => {
+    it('requires `title` (in a more strict way than for `content`)', async () => {
 
       article.title = '';
 
@@ -161,7 +161,7 @@ describe('The `Article` model', () => {
        *
        * http://docs.sequelizejs.com/manual/tutorial/models-definition.html#expansion-of-models
        */
-      xit('truncates the `content`', () => {
+      it('truncates the `content`', () => {
 
         expect(article.content).to.equal(fullText);
 
@@ -170,7 +170,7 @@ describe('The `Article` model', () => {
 
       });
 
-      xit('accepts any length', () => {
+      it('accepts any length', () => {
 
         expect(article.content).to.equal(fullText);
 
@@ -223,7 +223,7 @@ describe('The `Article` model', () => {
         return Promise.all(articles);
       });
 
-      xit('finds one specific article by its `title`', async () => {
+      it('finds one specific article by its `title`', async () => {
 
         const foundArticle = await Article.findByTitle('Migratory Birds');
         expect(foundArticle).not.to.be.an.instanceOf(Array);
@@ -244,7 +244,7 @@ describe('The `Article` model', () => {
      * http://docs.sequelizejs.com/manual/tutorial/associations.html#belongsto
      */
 
-    xit("belongs to a user, who is stored as the article's `author`", async () => {
+    it("belongs to a user, who is stored as the article's `author`", async () => {
 
       const creatingUser = User.create({ name: 'Alatar the Blue'});
       const creatingArticle = Article.create({
