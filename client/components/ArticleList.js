@@ -2,19 +2,23 @@ import React from 'react';
 import Article from './Article';
 
 class ArticleList extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      articles: []
+    };
+  }
 
-    constructor() {
-        super();
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Today's Articles:</h1>
-            </div>
-        );
-    }
-
+  render() {
+    return (
+      <div>
+        <h1>Today's Articles:</h1>
+        {this.state.articles.map(article => {
+          return <Article key={article.id} fullArticle={article} />;
+        })}
+      </div>
+    );
+  }
 }
 
-export default ArticleList
+export default ArticleList;

@@ -29,7 +29,7 @@ const Article = db.define('article', {
     type: Sequelize.ARRAY(Sequelize.STRING),
     defaultValue: [],
     get() {
-      return this.getDataValue('article').join(', ');
+      return this.getDataValue('tags').join(', ');
     }
   }
 });
@@ -46,9 +46,9 @@ Article.findByTitle = title => {
   });
 };
 
-Article.beforeUpdate(() => {
-  Article.version++;
-})
+Article.beforeUpdate(function(article) {
+  article.version++;
+});
 
 Article.belongsTo(User, { as: 'author' });
 
