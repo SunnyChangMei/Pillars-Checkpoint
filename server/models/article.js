@@ -2,7 +2,7 @@
 
 const db = require('./database');
 const Sequelize = require('sequelize');
-
+//Zach - This all looks really good. I have no specific comments for this file. Good work.
 // Make sure you have `postgres` running!
 
 const User = require('./user');
@@ -14,24 +14,24 @@ const Article = db.define('article', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   content: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
   },
   version: {
     type: Sequelize.INTEGER,
-    defaultValue: 0
+    defaultValue: 0,
   },
   tags: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     defaultValue: [],
     get() {
       return this.getDataValue('tags').join(', ');
-    }
-  }
+    },
+  },
 });
 
 Article.prototype.truncate = function(length) {
@@ -41,8 +41,8 @@ Article.prototype.truncate = function(length) {
 Article.findByTitle = title =>
   Article.findOne({
     where: {
-      title
-    }
+      title,
+    },
   });
 
 Article.beforeUpdate(article => {

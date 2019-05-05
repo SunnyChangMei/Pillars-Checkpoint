@@ -1,11 +1,11 @@
 import React from 'react';
 import Article from './Article';
-
+//Zach - Great component.
 class ArticleList extends React.Component {
   constructor() {
     super();
     this.state = {
-      articles: []
+      articles: [],
     };
   }
 

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Article = require('../models/article');
-
+//Zach - This is all great as well. You are using yourt variables in a readable and clean way (e.g. The use of shorthand for object key/values of the same name). Awesome work.
 router.get('/articles', async (req, res, next) => {
   try {
     const articles = await Article.findAll();
@@ -34,7 +34,7 @@ router.post('/articles/', async (req, res, next) => {
     } else {
       res.status(200).json({
         message: 'Created successfully',
-        article
+        article,
       });
     }
   } catch (error) {
@@ -53,7 +53,7 @@ router.put('/articles/:id', async (req, res, next) => {
       const updated = await updateArticle.update(req.body);
       res.status(200).json({
         message: 'Updated successfully',
-        article: updated
+        article: updated,
       });
     }
   } catch (error) {

@@ -1,9 +1,9 @@
 import React from 'react';
 
 // exporting the constructor function (dumb component).
-
-const Article = ({fullArticle}) => {
-  const {title, content} = fullArticle;
+// Zach - Great us of destructuing the incoming props for clarity and economy of code. This is well written code.
+const Article = ({ fullArticle }) => {
+  const { title, content } = fullArticle;
   return (
     <div>
       <h1>{title}</h1>
